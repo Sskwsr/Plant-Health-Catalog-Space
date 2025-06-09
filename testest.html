@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Catalogue of Concerns</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 2rem;
+  }
+  .tab-container {
+    margin-top: 1rem;
+  }
+  .tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ccc;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .tab-button {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+  }
+  .tab-button.active {
+    border-color: #2c3e50;
+    color: #2c3e50;
+  }
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+  }
+
+  /* --- DEINE KATALOGFORMATIERUNG AUS DER ORIGINALDATEI --- */
+  nav {
+    margin-bottom: 2rem;
+    background-color: #e1e1e1;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+  nav ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  nav li {
+    margin: 0;
+  }
+  nav a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+  }
+  details {
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.1rem 0.75rem;
+    margin: 0.25rem 0 0.25rem 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  details.hazard > summary {
+    font-size: 1em;
+    font-weight: bold;
+  }
+  details.subhazard > summary {
+    font-size: 1em;
+    padding-left: 0.5rem;
+  }
+  details.subsubhazard > summary {
+    font-size: 1em;
+    font-weight: normal;
+    font-style: italic;
+    padding-left: 1rem;
+  }
+  details.concern > summary {
+    font-size: 1em;
+    font-weight: normal;
+    font-style: normal;
+    padding-left: 1.5rem;
+  }
+  summary {
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 3px;
+  }
+  ul {
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+    font-size: 0.9em;
+  }
+  li {
+    margin-bottom: 0.5rem;
+  }
+</style>
+</head>
+<body>
+  <h1>Catalogue of concerns for plant health in space-based horticulture systems</h1>
+
+  <div class="tab-container">
+    <div class="tabs">
+      <button class="tab-button" onclick="showTab('ziel')">Purpose and application</button>
+      <button class="tab-button" onclick="showTab('begriffe')">Structure logic</button>
+      <button class="tab-button" onclick="showTab('katalog')">Catalog</button>
+    </div>
+
+
+<div id="start" class="tab-content active">
+  <h2>Willkommen</h2>
+<p>This tool was developed as part of a Master's thesis titled <em>A Multidisciplinary Framework for
+Managing Plant Health in Extraterrestrial Horticulture</em> by Saskia Weser at University of applied sciences in Dresden, Germany in cooperation with the German Aerospace Center, Institue of Space Systems, Department Systems Analysis Space Segment (SRS) in Bremen, Germany.</p>
+
+  <p>Please select a tab above to begin exploring the catalog.</p>
+</div>
+
+    <div id="ziel" class="tab-content"> 
+
+<p>
+    The primary goal of this catalog is to promote and safeguard plant health in space-based cultivation systems by providing a structured overview of potential hazards, underlying mechanisms, and mitigation strategies. It aims to enable mission planners and system designers to prevent failures, enhance system reliability, and maintain functional plant performance under extraterrestrial conditions.
+  </p>
+
+  <p>
+    In this context, <em>plant health</em> is defined as <em>the condition that enables plants to fulfill their intended roles within a mission</em>, such as food production, oxygen generation, waste recycling or psychological support for crew members.</p>
+
+  <p>
+    Key indicators of plant health include:
+  </p>
+  <ul>
+    <li>Consistent growth</li>
+    <li>Yield performance</li>
+    <li>Physiological quality</li>
+    <li>Absence of disease</li>
+    <li>Environmental resilience</li>
+  </ul>
+
+  <p>
+    This catalog is designed to support:
+  </p>
+  <ul>
+    <li>Structured risk assessment in controlled horticultural environments</li>
+    <li>The design of robust and mission-adapted cultivation systems</li>
+    <li>Training of crew members and system operators</li>
+    <li>Resource planning and estimation of essential life support contributions</li>
+    <li>Onboard diagnosis and troubleshooting by astronauts during missions</li>
+  </ul>
+</div>
+
+
+
+<div id="begriffe" class="tab-content">
+  <p>
+    The catalog is organized in a hierarchical structure to reflect different specificity levels. Each level contributes to a detailed and modular understanding of plant health concerns in controlled or extraterrestrial environments.
+  </p>
+
+  <div style="line-height: 1.8; font-family: inherit;">
+    <div><span style="display:inline-block; width: 400px; font-weight: bold;">Hazard</span> → A broad category of risk that can impact plant health (e.g., Altered Gravity, Improper Environmental Control)</div>
+    <div><span style="display:inline-block; width: 400px; font-weight: bold;">└── Subhazard</span> → A specific type or source of risk within a hazard (e.g., Improper light exposure, Inadequate handling)</div>
+    <div><span style="display:inline-block; width: 400px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;└── Concern</span> → A documented or theoretical issue that affects plant health</div>
+    <div><span style="display:inline-block; width: 400px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── Concern ID</span> → Unique identifier that encodes catalog location</div>
+    <div><span style="display:inline-block; width: 400px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── Affected System Component</span> → Where the issue occurs or impacts</div>
+    <div><span style="display:inline-block; width: 400px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── Description of the Concern</span> → What the issue looks like in practice</div>
+    <div><span style="display:inline-block; width: 400px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── Underlying Risk Mechanism</span> → Biological/technical cause-and-effect link</div>
+    <div><span style="display:inline-block; width: 400px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── Source of the Concern</span> → Based on literature, inference, or observation</div>
+    <div><span style="display:inline-block; width: 400px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── Preventive Management Strategy</span> → How to prevent the issue</div>
+    <div><span style="display:inline-block; width: 400px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── Intervention Strategy</span> → How to correct the issue when it occurs</div>
+  </div>
+
+  <p>
+    This structure ensures that every potential plant health issue is captured in a consistent, evidence-informed, and actionable way.
+  </p>
+</div>
+
+
+
+
+    <div id="katalog" class="tab-content">
+      <details class="hazard hazard-1" id="hazard1">   
+  <summary>Hazard 1: Horticultural Management</summary>
+
+    <details class="subhazard">
+      <summary>Subhazard 1.1: Improper environmental management</summary>
+
+      <details class="subsubhazard">
+        <summary>Improper light exposure</summary>
+
+        <details class="concern">
+          <summary>Concern ID: HM-001 — No bloom development or unwanted bloom</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Lighting system</li>
+            <li><strong>Description of the Concern:</strong> Flowering anomalies in fruit or leafy crops due to suboptimal photoperiod or light spectrum.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Photoperiodic or spectral stress disrupting hormonal balance and developmental signaling.</li>
+            <li><strong>Source of the Concern:</strong> Experienced in EDEN laboratory from german aerospace center   </li>
+            <li><strong>Preventive Management Strategy:</strong> Provide species-specific light settings; integrate programmable spectrum and timing control.</li>
+            <li><strong>Intervention Strategy:</strong> Adjust crop-specific light settings, remove malformed blooms; replant if no improvement.</li>
+	</ul>
+	<img src="images/flowering salad.jpg" alt="Example of unwanted bloom on lettuce" style="max-width: 50%; margin: 1rem 0; border: 1px solid #ccc; border-radius: 5px;">
+	<img src="images/no bloom on rose.jpg" alt="Example of no bloom on rose" style="max-width: 50%; margin: 1rem 0; border: 1px solid #ccc; border-radius: 5px;">
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-002 — Intumescence</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Lighting and atmosphere control (UV filtering)</li>
+            <li><strong>Description of the Concern:</strong> Swelling of plant tissue due to lack of adequate UV radiation.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Cellular dysregulation due to absence of UV-induced physiological checks.</li>
+            <li><strong>Source of the Concern:</strong> Documented (Langhans & Tibbits, 1997)</li>
+            <li><strong>Preventive Management Strategy:</strong> Use UV-transmitting materials; avoid high-pressure sodium lamps.</li>
+            <li><strong>Intervention Strategy:</strong> Switch lighting source; reselect varieties with low susceptibility.</li>
+          </ul>
+	<img src="images/intumescence.jpg" alt="Example of intumescence on plants" style="max-width: 100%; margin: 1rem 0; border: 1px solid #ccc; border-radius: 5px;">
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-003 — Leaf scorch or burns</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Lighting system</li>
+            <li><strong>Description of the Concern:</strong> Damage to leaf tissue due to excessive light intensity.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Photothermal injury exceeding plant tolerance thresholds.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Design species-appropriate light maps and spatial configuration.</li>
+            <li><strong>Intervention Strategy:</strong> Reduce light intensity through software or repositioning of lamps.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-004 — Chlorosis and stunted growth</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Lighting system</li>
+            <li><strong>Description of the Concern:</strong> Pale leaves and slow development due to incorrect spectrum or excessive irradiance, especially after transitioning from low to high light environments.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Impaired chlorophyll synthesis and light-induced metabolic imbalance.</li>
+            <li><strong>Source of the Concern:</strong> Documented (Langhans & Tibbits, 1997)</li>
+            <li><strong>Preventive Management Strategy:</strong> Provide species-specific lighting; avoid continuous lighting and static temperature regimes.</li>
+            <li><strong>Intervention Strategy:</strong> Adjust light intensity and spectrum to optimal values.</li>
+          </ul>
+	<img src="images/chlorosis bean.jpg" alt="Example of chlorosis on plants" style="max-width: 100%; margin: 1rem 0; border: 1px solid #ccc; border-radius: 5px;">
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-005 — Reduced leaf enlargement and stem elongation</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Lighting control system</li>
+            <li><strong>Description of the Concern:</strong> Inhibited growth dynamics due to insufficient photoperiods.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Short light/dark cycles disrupt photoperiodic signaling and gibberellin pathways.</li>
+            <li><strong>Source of the Concern:</strong> Documented (Langhans & Tibbits, 1997)</li>
+            <li><strong>Preventive Management Strategy:</strong> Avoid light/dark cycles shorter than 24 hours.</li>
+            <li><strong>Intervention Strategy:</strong> Reprogram photoperiod to biologically appropriate cycles.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-006 — Increased lignification of stems</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Lighting spectrum control</li>
+            <li><strong>Description of the Concern:</strong> Excessively rigid stems caused by high blue or UV light exposure.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Stimulation of phenolic metabolism and lignin biosynthesis pathways.</li>
+            <li><strong>Source of the Concern:</strong> Inferred (from analog growth chamber studies)</li>
+            <li><strong>Preventive Management Strategy:</strong> Optimize spectral balance and tune blue/UV intensity per species.</li>
+            <li><strong>Intervention Strategy:</strong> Reduce blue/UV light levels dynamically.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-007 — Premature leaf senescence</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Light quality management system</li>
+            <li><strong>Description of the Concern:</strong> Early aging and leaf loss due to low red/far-red ratio (simulating shade conditions).</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Phytochrome-mediated stress signaling induces senescence pathways.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Ensure species-specific light ratios and avoid canopy shading.</li>
+            <li><strong>Intervention Strategy:</strong> Adjust light composition to increase red/far-red ratio.</li>
+          </ul>
+        <img src="images/HM007.jpg" alt="Example" style="max-width: 50%; margin: 1rem 0; border: 1px solid #ccc; border-radius: 5px;">
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-008 — Growth anomalies due to circadian desynchronization</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Lighting schedule controller</li>
+            <li><strong>Description of the Concern:</strong> Abnormal growth patterns resulting from disruption of circadian rhythms.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Desynchronized internal plant clocks interfere with hormone regulation and metabolism.</li>
+            <li><strong>Source of the Concern:</strong> Inferred but indicated by Ruts et al. </li>
+            <li><strong>Preventive Management Strategy:</strong> Design lighting regimes that match natural day/night cycles or established plant chronotypes.</li>
+            <li><strong>Intervention Strategy:</strong> Reset photoperiod synchronization and monitor response.</li>
+          </ul>
+	<img src="images/HM008.jpg" alt="Example" style="max-width: 80%; margin: 1rem 0; border: 1px solid #ccc; border-radius: 5px;">
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-009 — Algae growth in nutrient solution</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Nutrient delivery and lighting exposure interface</li>
+            <li><strong>Description of the Concern:</strong> Proliferation of algae in light-exposed nutrient reservoirs with stagnant flow.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Photosynthetic contamination competing for nutrients and oxygen.</li>
+            <li><strong>Source of the Concern:</strong> Documented (controlled environment agriculture studies)</li>
+            <li><strong>Preventive Management Strategy:</strong> Opaque covers and light shielding; maintain fluid motion.</li>
+            <li><strong>Intervention Strategy:</strong> Flush irrigation systems and remove biofilms.</li>
+          </ul>
+	<img src="images/HM009.jpg" alt="Example" style="max-width: 50%; margin: 1rem 0; border: 1px solid #ccc; border-radius: 5px;">
+        </details>
+
+      </details>
+
+      <!-- Subsubhazard: Improper temperatures -->
+      <details class="subsubhazard">
+        <summary>Improper temperatures</summary>
+
+        <details class="concern">
+          <summary>Concern ID: HM-010 — Metabolic slowdown</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Thermal control system</li>
+            <li><strong>Description of the Concern:</strong> Decrease in physiological activity due to cold-induced nutrient uptake limitations.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Reduced enzymatic function and slowed metabolic transport at suboptimal temperatures.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Maintain temperatures above species-specific critical thresholds using environmental controls.</li>
+            <li><strong>Intervention Strategy:</strong> Adjust thermal settings promptly and monitor nutrient assimilation rates.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-011 — Leaf burns and tissue damage</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Lighting and heat emission interface</li>
+            <li><strong>Description of the Concern:</strong> Localized overheating leads to physical tissue damage and necrosis.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Thermal stress exceeding tolerance limits, especially near high-output lighting systems.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Ensure sufficient spacing between lamps and plant tissues; use heat shielding.</li>
+            <li><strong>Intervention Strategy:</strong> Reduce lighting intensity, increase humidity to buffer temperature peaks.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-012 — Flower abortion</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Temperature regulation system</li>
+            <li><strong>Description of the Concern:</strong> Aborted floral development due to temperature fluctuations beyond reproductive tolerance range.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Heat or cold shock during critical phases of floral induction and pollination.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Stabilize temperature within narrow optimal range during reproductive phases.</li>
+            <li><strong>Intervention Strategy:</strong> Restore environmental stability and monitor for compensatory flowering.</li>
+          </ul>
+        </details>
+
+      </details>
+
+      <!-- Subsubhazard: Improper atmosphere composition -->
+      <details class="subsubhazard">
+        <summary>Improper atmosphere composition</summary>
+
+        <details class="concern">
+          <summary>Concern ID: HM-019 — Ethylene accumulation</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Atmosphere management system</li>
+            <li><strong>Description of the Concern:</strong> Elevated ethylene levels trigger premature senescence, flower abortion, or growth inhibition.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Ethylene-sensitive signaling pathways alter plant hormonal balance and tissue development.</li>
+            <li><strong>Source of the Concern:</strong> Documented (Wheeler 1995; Abeles et al. 1992)</li>
+            <li><strong>Preventive Management Strategy:</strong> Integrate ethylene scrubbers (permanganate filters, catalytic burners) and monitor gas composition regularly.</li>
+            <li><strong>Intervention Strategy:</strong> Apply ethylene mitigation methods and remove or isolate affected tissues.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-020 — Pathogen susceptibility due to ethylene stress</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Air composition control</li>
+            <li><strong>Description of the Concern:</strong> Ethylene accumulation weakens plant tissues, making them more prone to pathogen attack.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Ethylene-induced cell wall softening reduces resistance to microbial penetration.</li>
+            <li><strong>Source of the Concern:</strong> Inferred</li>
+            <li><strong>Preventive Management Strategy:</strong> Maintain ethylene below threshold levels; enhance circulation and filtration.</li>
+            <li><strong>Intervention Strategy:</strong> Diagnose pathogen; remove and isolate infected tissue; sanitize air pathways.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-021 — Growth reduction from CO₂ deficiency</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> CO₂ delivery system</li>
+            <li><strong>Description of the Concern:</strong> Reduced vegetative and reproductive performance due to low ambient CO₂ concentration.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Limitation of photosynthesis and carbon assimilation processes.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Supply pressurized CO₂ and maintain optimal levels (1000–2000 ppm).</li>
+            <li><strong>Intervention Strategy:</strong> Inject CO₂ and adjust ventilation rates as needed.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-022 — Physiological inhibition from high CO₂ levels</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Human/plant module air interaction</li>
+            <li><strong>Description of the Concern:</strong> Excess CO₂ interferes with physiological processes such as transpiration and photosynthesis.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> CO₂ oversaturation disrupts stomatal function and cellular pH balance.</li>
+            <li><strong>Source of the Concern:</strong> Documented (Langhans & Tibbitts)</li>
+            <li><strong>Preventive Management Strategy:</strong> Minimize crew exposure in plant area; increase air exchange rates.</li>
+            <li><strong>Intervention Strategy:</strong> Vent excess CO₂; use personal filtration gear during high emission phases.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-023 — Nutrient uptake inhibition due to CO₂-induced pH imbalance</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Root zone pH control system</li>
+            <li><strong>Description of the Concern:</strong> High CO₂ alters nitrate uptake, raising pH and impeding micronutrient absorption.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Increased alkalinity disrupts solubility of Fe, Mn, and other ions.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Monitor and buffer pH with balanced nutrient formulations.</li>
+            <li><strong>Intervention Strategy:</strong> Apply pH-lowering agents when critical thresholds are exceeded.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-024 — Chemical stress from air pollutants</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Air purification and filtration</li>
+            <li><strong>Description of the Concern:</strong> Pollutants such as ozone, VOCs, and sulfur dioxide cause oxidative damage and physiological disorder.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Reactive oxygen species and toxic byproducts impair cellular structures.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Use activated carbon and ozone filters; choose resilient plant varieties.</li>
+            <li><strong>Intervention Strategy:</strong> Enhance air exchange and provide antioxidant support (e.g. ascorbate, glutathione).</li>
+          </ul>
+        </details>
+
+      </details>
+
+      <!-- Subsubhazard: Improper air humidity -->
+      <details class="subsubhazard">
+        <summary>Improper air humidity</summary>
+
+        <details class="concern">
+          <summary>Concern ID: HM-013 — Fungal infection due to condensation</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Air humidity regulation system</li>
+            <li><strong>Description of the Concern:</strong> Development of fungal pathogens triggered by water condensation on plant surfaces.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Surface moisture fosters fungal spore germination and colonization.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Maintain sufficient temperature gradients to avoid condensation.</li>
+            <li><strong>Intervention Strategy:</strong> Reduce relative humidity (rH); increase temperature slightly to eliminate dew point conditions.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-014 — Fungal infections due to high humidity and poor air circulation</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Air circulation and dehumidification unit</li>
+            <li><strong>Description of the Concern:</strong> Accumulation of moist air leads to anoxic microclimates promoting fungal growth.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> High relative humidity combined with air stagnation supports pathogenic proliferation.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Optimize airflow across plant surfaces and regulate humidity under 90%.</li>
+            <li><strong>Intervention Strategy:</strong> Enhance air circulation; activate drying cycles or deploy antifungal treatments if needed.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-015 — Wilting from low humidity</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Humidification and irrigation systems</li>
+            <li><strong>Description of the Concern:</strong> Excessive transpiration in dry air causes cellular dehydration and turgor loss.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Low rH increases transpiration beyond water uptake capacity.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Maintain minimum rH above 30% and synchronize with irrigation cycles.</li>
+            <li><strong>Intervention Strategy:</strong> Increase ambient humidity; adjust irrigation intervals.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-016 — Tipburn due to impaired calcium transport</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Atmospheric and nutrient transport interaction</li>
+            <li><strong>Description of the Concern:</strong> Nutritional deficiency localized at leaf tips due to environmental imbalance.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Reduced transpiration under high humidity lowers calcium mobility.</li>
+            <li><strong>Source of the Concern:</strong> Documented (Tibbitts & Langhans)</li>
+            <li><strong>Preventive Management Strategy:</strong> Regulate humidity by day and enhance transpiration cues.</li>
+            <li><strong>Intervention Strategy:</strong> Adjust humidity dynamics across light/dark cycle; ensure nutrient uptake efficiency.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-017 — Blossom-end rot</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Nutrient uptake and transpiration balance</li>
+            <li><strong>Description of the Concern:</strong> Localized necrosis on fruits due to disrupted calcium allocation.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Poor transpiration flow prevents calcium reaching fruit extremities.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Maintain balanced transpiration via controlled humidity.</li>
+            <li><strong>Intervention Strategy:</strong> Similar to tipburn: optimize humidity and ensure calcium availability.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-018 — Electrostatic discharge (ESD) damage</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Environmental control and containment</li>
+            <li><strong>Description of the Concern:</strong> Physical damage from electrostatic buildup in extremely dry air, especially in small or enclosed growth units.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Dry air and friction generate static electricity that discharges across sensitive plant tissues.</li>
+            <li><strong>Source of the Concern:</strong> Inferred (Microcool case reports)</li>
+            <li><strong>Preventive Management Strategy:</strong> Maintain rH between 40–60% to prevent charge accumulation.</li>
+            <li><strong>Intervention Strategy:</strong> Restore optimal humidity; consider use of antistatic materials or ionizing equipment.</li>
+          </ul>
+        </details>
+      </details>
+    </details>
+
+    <details class="subhazard">
+      <summary>Subhazard 1.2: Inadequate handling</summary>
+
+      <details class="subsubhazard">
+        <summary>Incorrect pruning</summary>
+
+        <details class="concern">
+          <summary>Concern ID: HM-025 — Sink-source imbalances</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Canopy structure and growth protocol</li>
+            <li><strong>Description of the Concern:</strong> Biomass allocation and resilience disrupted by pruning mismanagement.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Disproportionate sink/source ratio disturbs photosynthate distribution.</li>
+            <li><strong>Source of the Concern:</strong> Inferred</li>
+            <li><strong>Preventive Management Strategy:</strong> Provide pruning guidelines based on plant-specific sink/source dynamics.</li>
+            <li><strong>Intervention Strategy:</strong> Restore balance by targeted pruning or regrowth stimulation.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-026 — Delayed flowering or fruit development</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Shoot management protocol</li>
+            <li><strong>Description of the Concern:</strong> Improper pruning results in developmental delays.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Energy and hormone distribution altered due to over/under-pruning.</li>
+            <li><strong>Source of the Concern:</strong> Inferred</li>
+            <li><strong>Preventive Management Strategy:</strong> Time pruning to align with plant phenological stages.</li>
+            <li><strong>Intervention Strategy:</strong> Adjust light/nutrient balance to stimulate compensatory growth.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-027 — Pathogen infection via contaminated tools</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Crew tool handling protocol</li>
+            <li><strong>Description of the Concern:</strong> Improper sanitation of cutting tools leads to infection risk.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Pathogens introduced via wounds under favorable conditions.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Use sterilized sharp tools and operate in controlled environments.</li>
+            <li><strong>Intervention Strategy:</strong> Diagnose and isolate infection sites; sanitize tools and restore environmental control.</li>
+          </ul>
+        </details>
+      </details>
+
+      <details class="subsubhazard">
+        <summary>Improper pollination</summary>
+
+        <details class="concern">
+          <summary>Concern ID: HM-028 — No or reduced fruit set</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Reproduction management system</li>
+            <li><strong>Description of the Concern:</strong> Failure of fruit development due to inefficient pollination.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Incomplete pollen transfer and fertilization under suboptimal conditions.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Employ parthenocarpic species or apply manual pollination under optimal conditions.</li>
+            <li><strong>Intervention Strategy:</strong> Adjust microclimate; manually transfer pollen; reassess varietal choice.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-029 — Misshaped fruit due to incomplete fertilization</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Fertility management</li>
+            <li><strong>Description of the Concern:</strong> Malformed fruit as a result of poor pollination.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Partial fertilization disrupts hormonal cues for balanced growth.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Ensure environmental control during pollination phase.</li>
+            <li><strong>Intervention Strategy:</strong> Optimize temperature and humidity; repeat pollination cycle.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-030 — Seedless fruit in generative systems</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Reproductive cycle control</li>
+            <li><strong>Description of the Concern:</strong> Parthenocarpy prevents seed development in long-term systems relying on propagation.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Lack of fertilization in parthenocarpic cultivars blocks seed formation.</li>
+            <li><strong>Source of the Concern:</strong> Theoretical</li>
+            <li><strong>Preventive Management Strategy:</strong> Use open-pollinated, non-hybrid cultivars for long-term sustainability.</li>
+            <li><strong>Intervention Strategy:</strong> Ensure functioning manual or airflow-assisted pollination system.</li>
+          </ul>
+        </details>
+      </details>
+
+      <details class="subsubhazard">
+        <summary>Mechanical damage</summary>
+
+        <details class="concern">
+          <summary>Concern ID: HM-031 — Broken plant parts</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Physical interaction with crew or robotics</li>
+            <li><strong>Description of the Concern:</strong> Structural damage to stems, leaves, or roots during handling or maintenance.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Mechanical stress causes open wounds and potential infection entry points.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Establish handling protocols with spatial guidelines and support structures.</li>
+            <li><strong>Intervention Strategy:</strong> Remove damaged parts; apply wound care and monitor infection risk.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-032 — Root damage during transplanting</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Transplantation tools and techniques</li>
+            <li><strong>Description of the Concern:</strong> Root systems become compromised during manual or automated relocation.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Mechanical tearing or desiccation interrupts water and nutrient uptake.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Use minimally invasive tools; maintain root moisture and limit exposure time.</li>
+            <li><strong>Intervention Strategy:</strong> Optimize post-transplant humidity and provide recovery buffer nutrients.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: HM-033 — Reduced photosynthetic efficiency due to crushed leaves</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Spatial configuration of growth chamber</li>
+            <li><strong>Description of the Concern:</strong> Compaction or overlapping of leaves reduces light capture and gas exchange.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Damaged or shaded tissue diminishes carbon assimilation rates.</li>
+            <li><strong>Source of the Concern:</strong> Inferred</li>
+            <li><strong>Preventive Management Strategy:</strong> Design leaf spacing systems and monitor plant architecture.</li>
+            <li><strong>Intervention Strategy:</strong> Separate or prune overlapping leaves; stimulate new canopy development.</li>
+          </ul>
+        </details>
+      </details>
+    </details>
+
+    <details class="subhazard">
+      <summary>Subhazard 1.3: Irrigation/Nutrition</summary>
+
+        <details class="subsubhazard">
+          <summary>Watering inconsistencies</summary>
+
+            <details class="concern">
+              <summary>Concern ID: HM-034 — Hypoxia in root zone</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Irrigation system design</li>
+                <li><strong>Description of the Concern:</strong> Water accumulation in root area, especially in microgravity.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Oxygen deprivation to roots, inhibiting nutrient uptake.</li>
+                <li><strong>Source of the Concern:</strong> Documented</li>
+                <li><strong>Preventive Management Strategy:</strong> Use gravity-independent watering methods and drainage design (e.g., capillary mats).</li>
+                <li><strong>Intervention Strategy:</strong> Improve water flow and remove excess water manually or via system reprogramming.</li>
+              </ul>
+            </details>
+
+            <details class="concern">
+              <summary>Concern ID: HM-035 — Fruit cracking</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Irrigation and nutrient timing control</li>
+                <li><strong>Description of the Concern:</strong> Sudden water uptake causes ruptures in fruit skin.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Elasticity threshold of skin exceeded due to osmotic imbalance.</li>
+                <li><strong>Source of the Concern:</strong> Documented (Langhans, Tibbitts & Peet, 1992)</li>
+                <li><strong>Preventive Management Strategy:</strong> Maintain consistent irrigation schedule and support calcium balance.</li>
+                <li><strong>Intervention Strategy:</strong> Use calcium sprays or gibberellic acid to strengthen fruit tissue.</li>
+              </ul>
+            </details>
+
+            <details class="concern">
+              <summary>Concern ID: HM-036 — Wilting due to insufficient watering</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Water delivery system</li>
+                <li><strong>Description of the Concern:</strong> Lack of water leads to turgor loss and cellular collapse.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Transpiration exceeds uptake, reducing internal pressure.</li>
+                <li><strong>Source of the Concern:</strong> Documented</li>
+                <li><strong>Preventive Management Strategy:</strong> Automate irrigation based on soil moisture sensors.</li>
+                <li><strong>Intervention Strategy:</strong> Increase water volume or frequency until recovery observed.</li>
+              </ul>
+            </details>
+
+            <details class="concern">
+              <summary>Concern ID: HM-037 — Disruptions in nutrient uptake</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Nutrient flow dynamics</li>
+                <li><strong>Description of the Concern:</strong> Nutrient transport is impaired by inconsistent hydration patterns.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Fluctuating water levels lead to erratic ion transport in roots.</li>
+                <li><strong>Source of the Concern:</strong> Documented</li>
+                <li><strong>Preventive Management Strategy:</strong> Match irrigation schedules with transpiration curves.</li>
+                <li><strong>Intervention Strategy:</strong> Normalize hydration profile and replenish lost nutrients.</li>
+              </ul>
+            </details>
+        </details>
+
+        <details class="subsubhazard">
+          <summary>Improper nutrient supply</summary>
+
+            <details class="concern">
+              <summary>Concern ID: HM-038 — Nutrient deficiencies</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Nutrient formulation</li>
+                <li><strong>Description of the Concern:</strong> Essential elements missing or imbalanced, causing visible plant stress.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Impaired metabolic pathways, chlorosis, necrosis or malformations.</li>
+                <li><strong>Source of the Concern:</strong> Documented</li>
+                <li><strong>Preventive Management Strategy:</strong> Calibrate nutrient solutions based on plant species and growth phase.</li>
+                <li><strong>Intervention Strategy:</strong> Apply targeted supplementation based on deficiency diagnosis.</li>
+              </ul>
+            </details>
+
+            <details class="concern">
+              <summary>Concern ID: HM-039 — Nutrient toxicities</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Nutrient concentration management</li>
+                <li><strong>Description of the Concern:</strong> Oversupply of certain nutrients causes toxic buildup.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Osmotic stress, ion competition, or pH imbalances.</li>
+                <li><strong>Source of the Concern:</strong> Documented</li>
+                <li><strong>Preventive Management Strategy:</strong> Monitor EC levels and balance nutrient input.</li>
+                <li><strong>Intervention Strategy:</strong> Dilute nutrient solution or flush system with purified water.</li>
+              </ul>
+            </details>
+        </details>
+
+        <details class="subsubhazard">
+          <summary>pH imbalances</summary>
+
+            <details class="concern">
+              <summary>Concern ID: HM-040 — Disruption of nutrient uptake due to pH</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> pH regulation and sensing</li>
+                <li><strong>Description of the Concern:</strong> Improper pH impairs nutrient solubility and root function.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Altered ionic state and reduced availability of nutrients.</li>
+                <li><strong>Source of the Concern:</strong> Documented</li>
+                <li><strong>Preventive Management Strategy:</strong> Use pH sensors and buffers; maintain target range.</li>
+                <li><strong>Intervention Strategy:</strong> Adjust pH with acid/base corrections.</li>
+              </ul>
+            </details>
+        </details>
+
+        <details class="subsubhazard">
+          <summary>Salinity and osmotic stress</summary>
+
+            <details class="concern">
+              <summary>Concern ID: HM-041 — Osmotic stress and ion toxicity</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> EC control and nutrient salinity</li>
+                <li><strong>Description of the Concern:</strong> High salt levels cause reduced water uptake and cellular dehydration.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Osmotic pressure gradient prevents water absorption and damages roots.</li>
+                <li><strong>Source of the Concern:</strong> Documented</li>
+                <li><strong>Preventive Management Strategy:</strong> Monitor EC; balance ion concentrations.</li>
+                <li><strong>Intervention Strategy:</strong> Dilute solution with reverse osmosis water and increase drainage.</li>
+              </ul>
+            </details>
+        </details>
+    </details>
+
+  </details>
+
+  <details class="hazard hazard-2" id="hazard2">
+    <summary>Hazard 2: Hostile/Closed Environment</summary>
+
+    <!-- Subhazard 2.1: Improper resource management -->
+    <details class="subhazard">
+      <summary>Subhazard 2.1: Improper resource management</summary>
+
+        <details class="concern">
+          <summary>Concern ID: HCE-001 — Shortage of critical operation materials</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Material supply chain</li>
+            <li><strong>Description of the Concern:</strong> Shortages of fertilizers, substrates, spare parts, etc..</li>
+            <li><strong>Underlying Risk Mechanism:</strong> False calculations, unseen needs or malfunctioning recycling loops.</li>
+            <li><strong>Source of the Concern:</strong> Inferred</li>
+            <li><strong>Preventive Management Strategy:</strong> Use of precise calculation models, maintain backup stock.</li>
+            <li><strong>Intervention Strategy:</strong> Redistribution if possible, initiate rationing or emergency sourcing protocols.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: HCE-002 — Waste/gas-related phytotoxicity</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Waste management and nutrient delivery system</li>
+            <li><strong>Description of the Concern:</strong> Root zone and plant tissue damage due to toxic gases like ammonia or hydrogen sulfide.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Decomposition gases from organic waste.</li>
+            <li><strong>Source of the Concern:</strong> Referenced in H1 atmosphere section</li>
+            <li><strong>Preventive Management Strategy:</strong> Strict hygiene: immediate waste removal, ensure proper aeration.</li>
+            <li><strong>Intervention Strategy:</strong> Flush system, improve oxygenation, replace solution.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: HCE-003 — Microbial proliferation from harvest waste</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Waste and sanitation system</li>
+            <li><strong>Description of the Concern:</strong> Accumulated organic matter promotes pathogenic microbial growth.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Microbial buildup due to unmanaged waste.</li>
+            <li><strong>Source of the Concern:</strong> Inferred</li>
+            <li><strong>Preventive Management Strategy:</strong> Strict hygiene: immediate waste removal, ensure proper aeration.</li>
+            <li><strong>Intervention Strategy:</strong> if infection occurs, Diagnose pathogen, treat and dispose infected tissue, ensure circulation.</li>
+          </ul>
+        </details>
+       </details>
+
+<!-- Subhazard 2.2: Regolith and dust contamination -->
+    <details class="subhazard">
+      <summary>Subhazard 2.2: Regolith and dust contamination</summary>
+
+            <details class="concern">
+              <summary>Concern ID: HCE-004 — Dysfunctinal plant metabolism and microbial life</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Root zone</li>
+                <li><strong>Description of the Concern:</strong> Contamination with toxic perchlorates or unknown compounds.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Toxicity from Martian regolith (e.g. perchlorates, heavy metals).</li>
+                <li><strong>Source of the Concern:</strong> Documented (Wang; Misra; Hall)</li>
+                <li><strong>Preventive Management Strategy:</strong> Use habitat airlocks, remove perchlorates via biocatalysis/filtration, regular cleaning.</li>
+                <li><strong>Intervention Strategy:</strong> Ongoing research – implement current best practices where possible.</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: HCE-005 — Reduced photosynthesis</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Plant surfaces and stomata</li>
+                <li><strong>Description of the Concern:</strong> Dust covering leaves blocks light and gas exchange.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Surface coverage and optical interference.</li>
+                <li><strong>Source of the Concern:</strong> Inferred</li>
+                <li><strong>Preventive Management Strategy:</strong> Regular cleaning, air filtration, design to prevent dust accumulation.</li>
+                <li><strong>Intervention Strategy:</strong> Manual or automated plant surface cleaning.</li>
+              </ul>
+            </details>
+
+            <details class="concern">
+              <summary>Concern ID: HCE-006 — Hardware/system malfunction due to "normal" dust</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Subsystem filters and moving parts (fans, pumps, robotics)</li>
+                <li><strong>Description of the Concern:</strong>Mechanical failure from dust clogging or abrasion.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Dust particles entering moving components and filtration.</li>
+                <li><strong>Source of the Concern:</strong> Inferred</li>
+                <li><strong>Preventive Management Strategy:</strong> Use dust-sealed hardware, modular replaceable filters, active air filtration.</li>
+                <li><strong>Intervention Strategy:</strong> Manual or automated hardware surface cleaning.</li>
+              </ul>
+            </details>
+           </details>
+
+<!-- Subhazard 2.3: Material decay in long-term missions -->
+    <details class="subhazard">
+      <summary>Subhazard 2.3: Material decay in long-term missions</summary>
+
+            <details class="concern">
+              <summary>Concern ID: HCE-007 — Microplastic contamination of water cycles and plants itself</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Irrigation system, plants</li>
+                <li><strong>Description of the Concern:</strong> Plastics degrade over time, contaminating water with particles.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Aging of synthetic materials under mission conditions.</li>
+                <li><strong>Source of the Concern:</strong> Documented</li>
+                <li><strong>Preventive Management Strategy:</strong> Use non-plastic components (PTFE, stainless steel), particle monitoring.</li>
+                <li><strong>Intervention Strategy:</strong> Physical filtration, part replacement, material upgrades.</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: HCE-008 — Leaks in pipes and mechanical connections</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Irrigation system</li>
+                <li><strong>Description of the Concern:</strong> Moisture loss, pressure loss.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Material fatigue from pressure, vibration, thermal cycling.</li>
+                <li><strong>Source of the Concern:</strong> Inferred</li>
+                <li><strong>Preventive Management Strategy:</strong> Use fatigue-resistant materials, simulate stress before mission, install leak sensors.</li>
+                <li><strong>Intervention Strategy:</strong> Isolate defective parts, patch with epoxy/self-healing polymers, use 3D-printed spares.</li>
+              </ul>
+            </details>
+
+            <details class="concern">
+              <summary>Concern ID: HCE-009 — Hydroponic system failure </summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Irrigation system</li>
+                <li><strong>Description of the Concern:</strong> Corrosion-induced system damage.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Accelerated corrosion from radiation and moisture.</li>
+                <li><strong>Source of the Concern:</strong> Inferred</li>
+                <li><strong>Preventive Management Strategy:</strong> Use corrosion-resistant materials and radiation shielding.</li>
+                <li><strong>Intervention Strategy:</strong> Isolate defective parts, patch with epoxy/self-healing polymers, use 3D-printed spares.</li>
+              </ul>
+            </details>
+
+            <details class="concern">
+              <summary>Concern ID: HCE-010 — Gradual performance loss of systems (for example lighting) </summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> CEA subsystems and sensors</li>
+                <li><strong>Description of the Concern:</strong> LEDs and sensitive components degrade slowly over time.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Thermal cycling, dust, and wear on electronic systems.</li>
+                <li><strong>Source of the Concern:</strong> Documented</li>
+                <li><strong>Preventive Management Strategy:</strong> Use industrial-grade, modular LEDs, protect from dust, monitor output.</li>
+                <li><strong>Intervention Strategy:</strong> Replace panels, clean optics, if needed fabricate with 3D printing.</li>
+              </ul>
+            </details>
+	   </details>
+
+<!-- Subhazard 2.4: Pest entry and uncontrolled spread -->
+    <details class="subhazard">
+      <summary>Subhazard 2.4: Pest entry and uncontrolled spread</summary>
+
+            <details class="concern">
+              <summary>Concern ID: HCE-011 — Cross-contamination from other modules</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Biocontainment and sanitation systems, humans, plants</li>
+                <li><strong>Description of the Concern:</strong> Biological entry and spread risk from external or internal sources.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Air, water, crew, or surface contact vectors.</li>
+                <li><strong>Source of the Concern:</strong> Documented (Pierson 2001; Schuerger et al. 1998)</li>
+                <li><strong>Preventive Management Strategy:</strong> Preflight microbial checks, HEPA filters, module separation, hygiene protocols.</li>
+                <li><strong>Intervention Strategy:</strong> Sanitize modules, isolate affected compartments, monitor and reintroduce controlled microbiomes.</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: HCE-012 — Entry of unknown extraterrestrial organisms</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Biocontainment and sanitation systems, humans, plants</li>
+                <li><strong>Description of the Concern:</strong> Biological entry and spread risk from external or internal sources.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Air, water, crew, or surface contact vectors.</li>
+                <li><strong>Source of the Concern:</strong> Documented (Pierson 2001; Schuerger et al. 1998)</li>
+                <li><strong>Preventive Management Strategy:</strong> Preflight microbial checks, HEPA filters, module separation, hygiene protocols.</li>
+                <li><strong>Intervention Strategy:</strong> Sanitize modules, isolate affected compartments, monitor and reintroduce controlled microbiomes.</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: HCE-013 — Uncontrolled pathogen accumulation</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Biocontainment and sanitation systems, humans, plants</li>
+                <li><strong>Description of the Concern:</strong> Biological entry and spread risk from external or internal sources.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Air, water, crew, or surface contact vectors.</li>
+                <li><strong>Source of the Concern:</strong> Documented (Pierson 2001; Schuerger et al. 1998)</li>
+                <li><strong>Preventive Management Strategy:</strong> Preflight microbial checks, HEPA filters, module separation, hygiene protocols.</li>
+                <li><strong>Intervention Strategy:</strong> Sanitize modules, isolate affected compartments, monitor and reintroduce controlled microbiomes.</li>
+              </ul>
+            </details>
+
+            <details class="concern">
+              <summary>Concern ID: HCE-014 — Chronic contamination and biofilm formation</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Biocontainment and sanitation systems, humans, plants</li>
+                <li><strong>Description of the Concern:</strong> Biological entry and spread risk from external or internal sources.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Air, water, crew, or surface contact vectors.</li>
+                <li><strong>Source of the Concern:</strong> Documented (Pierson 2001; Schuerger et al. 1998)</li>
+                <li><strong>Preventive Management Strategy:</strong> Preflight microbial checks, HEPA filters, module separation, hygiene protocols.</li>
+                <li><strong>Intervention Strategy:</strong> Sanitize modules, isolate affected compartments, monitor and reintroduce controlled microbiomes.</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: HCE-015 — Latent microbial activation </summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Biocontainment and sanitation systems, humans, plants</li>
+                <li><strong>Description of the Concern:</strong> Biological entry and spread risk from external or internal sources.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Air, water, crew, or surface contact vectors.</li>
+                <li><strong>Source of the Concern:</strong> Documented (Pierson 2001; Schuerger et al. 1998)</li>
+                <li><strong>Preventive Management Strategy:</strong> Preflight microbial checks, HEPA filters, module separation, hygiene protocols.</li>
+                <li><strong>Intervention Strategy:</strong> Sanitize modules, isolate affected compartments, monitor and reintroduce controlled microbiomes.</li>
+              </ul>
+            </details>
+
+            <details class="concern">
+              <summary>Concern ID: HCE-016 — Suppression of supportive microbes</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Biocontainment and sanitation systems, humans, plants</li>
+                <li><strong>Description of the Concern:</strong> Biological entry and spread risk from external or internal sources.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Air, water, crew, or surface contact vectors.</li>
+                <li><strong>Source of the Concern:</strong> Documented (Pierson 2001; Schuerger et al. 1998)</li>
+                <li><strong>Preventive Management Strategy:</strong> Preflight microbial checks, HEPA filters, module separation, hygiene protocols.</li>
+                <li><strong>Intervention Strategy:</strong> Sanitize modules, isolate affected compartments, monitor and reintroduce controlled microbiomes.</li>
+              </ul>
+            </details>
+	   </details>
+
+<!-- Subhazard 2.5: Evolutionary concerns in long-term missions -->
+    <details class="subhazard">
+      <summary>Subhazard 2.5: Evolutionary concerns in long-term missions</summary>
+
+            <details class="concern">
+              <summary>Concern ID: HCE-017 — DNA damage, sterility, mutation load</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Plant genomes</li>
+                <li><strong>Description of the Concern:</strong> Genetic decline due to radiation.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Cosmic radiation causing mutations and gene silencing.</li>
+                <li><strong>Source of the Concern:</strong> Documented (Ludovici et al.)</li>
+                <li><strong>Preventive Management Strategy:</strong> Shielding, resistant varieties, in vitro culture, sequencing.</li>
+                <li><strong>Intervention Strategy:</strong> Gene editing (CRISPR), clonal propagation of viable lines (via in-vitro culture for example.</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: HCE-018 — Epingenetic drift and loss of traits</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Gene expression regulation</li>
+                <li><strong>Description of the Concern:</strong> Silencing of useful traits under CEA.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Microgravity, artifical lighting induce epigenetic changes.</li>
+                <li><strong>Source of the Concern:</strong> Inferred</li>
+                <li><strong>Preventive Management Strategy:</strong> Use epigenetically stable lines, control environment.</li>
+                <li><strong>Intervention Strategy:</strong> Epigenetic monitoring, tissue culture reset.</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: HCE-019 — Reduced genetic diversity</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Seed stock and reproduction management</li>
+                <li><strong>Description of the Concern:</strong> Loss of adaptability in small populations.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Random mutations and bottlenecks.</li>
+                <li><strong>Source of the Concern:</strong> Documented (Kumari et al.)</li>
+                <li><strong>Preventive Management Strategy:</strong> Diverse seed pools, cryopreservation, sequencing.</li>
+                <li><strong>Intervention Strategy:</strong> Cross-breeding, gene editing.</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: HCE-020 — Loss of resielience mechanisms</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Plant metabolism</li>
+                <li><strong>Description of the Concern:</strong> Loss of protective compounds in absence of natural enemies.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  No stress cues like predators or UV.</li>
+                <li><strong>Source of the Concern:</strong> Inferred</li>
+                <li><strong>Preventive Management Strategy:</strong> Use stress mimics, selective pressure via breeding.</li>
+                <li><strong>Intervention Strategy:</strong> Same as above.</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: HCE-020 — Microbial hyper-evolution</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Microbial ecosystem</li>
+                <li><strong>Description of the Concern:</strong> Uncontrolled development of aggressive strains that are far more adapted to the environement than others.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Evolution in isolated closed systems.</li>
+                <li><strong>Source of the Concern:</strong> Theoretical</li>
+                <li><strong>Preventive Management Strategy:</strong> Monitor microbial genomes, limit reproduction cycles.</li>
+                <li><strong>Intervention Strategy:</strong> Isolate or eliminate mutated strains.</li>
+              </ul>
+            </details>
+	   </details>
+          </details>
+
+<details class="hazard hazard-3" id="hazard3">
+    <summary>Hazard 3: Altered Gravity</summary>
+
+    <!-- Subhazard 3.1: Irrigation -->
+    <details class="subhazard">
+      <summary>Subhazard 3.1: Irrigation</summary>
+
+        <details class="concern">
+          <summary>Concern ID: AG-001 — Hypoxia in roots and epinastic leaves</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Root zone </li>
+            <li><strong>Description of the Concern:</strong> In microgravity, water tends to cling to root surfaces due to increased surface tension, which blocks oxygen diffusion and causes root hypoxia. Epinastic leaf curvature is also observed as a stress response.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Absence of gravitational drainage leads to water accumulation, suppressing passive gas exchange at the root surface.</li>
+            <li><strong>Source of the Concern:</strong> Documented (Levine 2021; APH and PONDS experiments)</li>
+            <li><strong>Preventive Management Strategy:</strong> Develop passive or semi-passive irrigation systems adapted to microgravity, e.g., pressure-regulated pumps (APH) or capillary wicking (PONDS).</li>
+            <li><strong>Intervention Strategy:</strong> Adjust irrigation protocol; modify root substrate or wick system; monitor oxygenation.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: AG-002 — Increased pathogen infection risk</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Root, Leaf and stem surfaces </li>
+            <li><strong>Description of the Concern:</strong> Without gravity, water droplets stagnate on plant surfaces, creating a moist microenvironment favorable for pathogen growth.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Lack of natural drainage and convection allows persistent water films, promoting microbial colonization.</li>
+            <li><strong>Source of the Concern:</strong> Inferred</li>
+            <li><strong>Preventive Management Strategy:</strong> Ensure air movement using fans or airflow paths.</li>
+            <li><strong>Intervention Strategy:</strong> Manually remove water films; increase airflow; apply antimicrobial protocols if needed.</li>
+          </ul>
+        </details>
+
+        <details class="concern">
+          <summary>Concern ID: AG-003 — Non-uniform humidity distribution</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Air circulation and climate regulation system </li>
+            <li><strong>Description of the Concern:</strong> In the absence of gravity-driven convection, water vapor accumulates unevenly, leading to humidity hotspots or dry zones.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> No buoyancy-driven air movement results in stagnation and microclimates within the module.</li>
+            <li><strong>Source of the Concern:</strong> Documented (microgravity analogs and ISS experiments)</li>
+            <li><strong>Preventive Management Strategy:</strong> Use mechanical ventilation (e.g., axial or radial fans) to actively circulate air in all module areas.</li>
+            <li><strong>Intervention Strategy:</strong> Adjust fan intensity and direction to redistribute air and homogenize humidity.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: AG-004 — Reduced evaporative cooling</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Plant leaf interface and module air regulation </li>
+            <li><strong>Description of the Concern:</strong> Plants cool themselves via evapotranspiration. In microgravity, impaired convection limits this cooling, increasing thermal stress.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Lack of vertical airflow impedes vapor removal from the leaf boundary layer, raising tissue temperature.</li>
+            <li><strong>Source of the Concern:</strong> Documented (microgravity analogs and ISS experiments)</li>
+            <li><strong>Preventive Management Strategy:</strong> Install targeted air jets or leaf-level air movement.</li>
+            <li><strong>Intervention Strategy:</strong> Monitor leaf temperatures; adjust airflow or lighting to reduce thermal load.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: AG-005 — Increased pathogen infection risk from condensation</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Crop canopy and interior hardware surfaces </li>
+            <li><strong>Description of the Concern:</strong> Ineffective temperature and humidity control causes condensation, especially in stagnant air zones, favoring pathogens.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Condensed moisture on leaves and structures provides entry points and habitat for microbes.</li>
+            <li><strong>Source of the Concern:</strong> Documented (space crop studies)</li>
+            <li><strong>Preventive Management Strategy:</strong> Use Mollier h,x-diagram to optimize humidity and temperature setpoints for dew point avoidance.</li>
+            <li><strong>Intervention Strategy:</strong> Dry affected areas; sanitize surfaces; adjust climate control to stay above dew point.</li>
+          </ul>
+        </details>
+       </details>
+
+
+<!-- Subhazard 3.3: Hormonal and Developmental Concerns -->
+    <details class="subhazard">
+      <summary>Subhazard 3.3: Hormonal and Developmental Concerns</summary>
+
+            <details class="concern">
+              <summary>Concern ID: AG-006 — Altered growth patterns and impaired organ formation</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Hormonal regulation and morphogenesis pathways</li>
+                <li><strong>Description of the Concern:</strong> Gravity absence disrupts spatial hormone gradients, particularly auxin, leading to misformed organs and irregular plant architecture.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Auxin transport relies on polar distribution, which is disturbed without gravitational orientation cues.</li>
+                <li><strong>Source of the Concern:</strong> Documented (various microgravity studies)</li>
+                <li><strong>Preventive Management Strategy:</strong> Currently unavailable — further research required on hormonal modulation strategies under microgravity.</li>
+                <li><strong>Intervention Strategy:</strong> Monitor growth behavior; consider environmental shaping or mechanical stimuli.</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: AG-007 — Altered cell expansion and differentiation</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Cytoskeleton and cellular development processes</li>
+                <li><strong>Description of the Concern:</strong> Cytoskeletal disorganization in microgravity leads to changes in cell shape, size, and wall properties.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Gravity absence alters tension and signaling in the actin–microtubule framework guiding cell development.</li>
+                <li><strong>Source of the Concern:</strong> Documented (cell biology studies in space)</li>
+                <li><strong>Preventive Management Strategy:</strong> Unknown — area of active research.</li>
+                <li><strong>Intervention Strategy:</strong> Track cell morphology; apply light direction, magnetic or mechanical cues as proxy stimuli.</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: AG-008 — Weakened plant condition (unspecific)</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Whole plant physiological state</li>
+                <li><strong>Description of the Concern:</strong> Many space-grown plants exhibit unspecific stress symptoms, but the precise causal chain remains unidentified.</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Likely systemic disruption of development, transport and perception systems due to microgravity.</li>
+                <li><strong>Source of the Concern:</strong> Inferred (multi-study observations)</li>
+                <li><strong>Preventive Management Strategy:</strong> Unknown — identify markers for early detection; support baseline health.</li>
+                <li><strong>Intervention Strategy:</strong> Adaptive responses: adjust environment; experiment with protective agents (e.g. antioxidants, hormones).</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: AG-009 — Impaired root growth directionality</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Root orientation and elongation system</li>
+                <li><strong>Description of the Concern:</strong> In microgravity, roots lose gravitropic directionality and may grow erratically or upward if no directive light source is a available</li>
+                <li><strong>Underlying Risk Mechanism:</strong>  Gravity no longer guides statolith sedimentation, which disrupts auxin redistribution and directional growth.</li>
+                <li><strong>Source of the Concern:</strong> Documented</li>
+                <li><strong>Preventive Management Strategy:</strong> Use directional light or moisture gradients to guide roots. Dont use indirectional light.</li>
+                <li><strong>Intervention Strategy:</strong> bla bla </li>
+              </ul>
+            </details>
+	   </details>
+
+
+<!-- Subhazard 3.4: Pollination and Reproductive Concerns -->
+    <details class="subhazard">
+      <summary>Subhazard 3.3: Hormonal and Developmental Concerns</summary>
+
+            <details class="concern">
+              <summary>Concern ID: AG-010 — Lack of pollen dispersal or inefficient transfer</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Pollination mechanism and reproductive organs</li>
+                <li><strong>Description of the Concern:</strong> Without gravity, pollen does not settle naturally onto stigmas, reducing fertilization rates.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Gravity is a passive vector for pollen; in microgravity, dispersal is impaired, especially in enclosed systems.</li>
+                <li><strong>Source of the Concern:</strong> Inferred </li>
+                <li><strong>Preventive Management Strategy:</strong> Use airflow or vibrational techniques to promote pollen movement.</li>
+                <li><strong>Intervention Strategy:</strong>Perform manual pollination with brushes or controlled airflow at anthesis.</li>
+              </ul>
+            </details>
+
+	    <details class="concern">
+              <summary>Concern ID: AG-011 — Irregular seed development</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Reproductive organs and vascular transport system</li>
+                <li><strong>Description of the Concern:</strong> Seeds may develop abnormally or abort due to altered transport dynamics in the reproductive phase under microgravity.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Disrupted phloem loading and hormonal balance affects nutrient delivery and embryo development.</li>
+                <li><strong>Source of the Concern:</strong> Inferred (partial reports from microgravity experiments) </li>
+                <li><strong>Preventive Management Strategy:</strong> Not yet established; ensure consistent environmental control during reproduction phase.</li>
+                <li><strong>Intervention Strategy:</strong>Monitor reproductive stages closely; adjust humidity, light and nutrient balance during seed set.</li>
+              </ul>
+            </details>
+	   </details>
+          </details>
+
+<details class="hazard hazard-4" id="hazard4">  
+    <summary>Hazard 4: Chronic ionizing radiation</summary>
+
+    <!--  Subhazard 4.1: Genetic, Metabolic, and Reproductive Concerns -->
+    <details class="subhazard">
+      <summary>Subhazard 4.1: Genetic, Metabolic, and Reproductive Concerns</summary>
+
+        <details class="concern">
+          <summary>Concern ID: CIO-001 — Spontaneous mutations in seedlings and seeds</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Genetic stability and plant propagation system</li>
+            <li><strong>Description of the Concern:</strong> Ionizing radiation can damage DNA, leading to heritable mutations during seed development and germination.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> High-energy particles (e.g. HZE ions) induce strand breaks or nucleotide modifications.</li>
+            <li><strong>Source of the Concern:</strong> Documented (Baiocco et al. 2018; Cherkashina et al. 2024)</li>
+            <li><strong>Preventive Management Strategy:</strong> Structural shielding (e.g. aluminum, water, polymers); underground cultivation; use of radiation-resistant species.</li>
+            <li><strong>Intervention Strategy:</strong> Genetic screening; selection of unaffected specimens; explore biotechnical repair via GMOs or symbiotic microbes.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: CIO-002 — Growth defects, impaired fruit development, or sterility</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Reproductive development and tissue morphogenesis</li>
+            <li><strong>Description of the Concern:</strong> Radiation-damaged genes or chromosomes interfere with normal growth and reproduction.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> DNA damage disrupts regulatory gene expression, cell cycle, and gamete formation.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Same as ER-001: Shielding, varietal selection, gene editing.</li>
+            <li><strong>Intervention Strategy:</strong> Screen for abnormalities; remove defective plants; propagate from unaffected tissue or seeds.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: CIO-003 — Increased susceptibility to disease</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Immune regulation and stress response</li>
+            <li><strong>Description of the Concern:</strong> Damage to genetic control systems impairs pathogen defense signaling.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Ionizing radiation alters expression of defense-related genes and antioxidant enzymes.</li>
+            <li><strong>Source of the Concern:</strong> Inferred</li>
+            <li><strong>Preventive Management Strategy:</strong> Cultivate resilient varieties; support plant immunity with microbial consortia.</li>
+            <li><strong>Intervention Strategy:</strong> Apply biocontrol or microbial symbionts; monitor stress markers.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: CIO-004 — Accelerated cell aging and premature senescence</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Cellular repair and longevity pathways</li>
+            <li><strong>Description of the Concern:</strong> Chronic radiation induces ROS production, leading to oxidative stress and early aging.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> ROS damage membranes, DNA and proteins, accelerating metabolic decline.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Increase antioxidant capacity via genetic or microbial means; shield tissue from radiation peaks.</li>
+            <li><strong>Intervention Strategy:</strong> Apply antioxidant compounds (e.g. ascorbate); monitor and adjust environmental conditions.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: CIO-005 — Reduced photosynthetic efficiency</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Chloroplasts and light-harvesting complex</li>
+            <li><strong>Description of the Concern:</strong> Radiation damages chloroplast structures, especially PSII, reducing light-to-energy conversion.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Photon or particle impact leads to photoinhibition and pigment breakdown.</li>
+            <li><strong>Source of the Concern:</strong> Documented</li>
+            <li><strong>Preventive Management Strategy:</strong> Include photoprotective pigments or cultivars with resilient plastids.</li>
+            <li><strong>Intervention Strategy:</strong> Optimize lighting to reduce additional stress; apply recovery supplements.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: CIO-006 — Disrupted energy metabolism</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Enzymatic pathways and mitochondrial function</li>
+            <li><strong>Description of the Concern:</strong> Enzyme systems involved in ATP synthesis or sugar metabolism are compromised.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Radiation-induced protein denaturation or ROS-mediated enzyme inhibition.</li>
+            <li><strong>Source of the Concern:</strong> Inferred</li>
+            <li><strong>Preventive Management Strategy:</strong> Select for metabolic resilience; protect systems via antioxidants or repair pathways.</li>
+            <li><strong>Intervention Strategy:</strong> Supplement with cofactors or alternate energy substrates.</li>
+          </ul>
+        </details>
+       </details>
+
+
+<!-- Subhazard 4.2: Material Decay -->
+    <details class="subhazard">
+      <summary> Subhazard 4.2: Material Decay </summary>
+
+            <details class="concern">
+              <summary>Concern ID: CIO-007 — Material fatigue and corrosion of hardware</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Structural and mechanical components</li>
+                <li><strong>Description of the Concern:</strong> Persistent radiation exposure weakens or degrades materials over time.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> High-energy radiation promotes microcracking, ionization corrosion, and embrittlement.</li>
+                <li><strong>Source of the Concern:</strong> Documented </li>
+                <li><strong>Preventive Management Strategy:</strong> Use radiation-tolerant materials (e.g. aluminum, PTFE); employ shielding.</li>
+                <li><strong>Intervention Strategy:</strong>Monitor wear and replace degraded components; use modularity and 3D printing for replacement.</li>
+              </ul>
+        </details>
+
+	<details class="concern">
+              <summary>Concern ID: CIO-008 — Microbial imbalance</summary>
+              <ul>
+                <li><strong>Affected System Component:</strong> Microbial ecosystems (for example rhizosphere)</li>
+                <li><strong>Description of the Concern:</strong> Radiation selectively suppresses or eliminates microbial species, disrupting beneficial communities.</li>
+                <li><strong>Underlying Risk Mechanism:</strong> Unequal DNA repair or tolerance capacities among species shift microbial composition unfavorably.</li>
+                <li><strong>Source of the Concern:</strong> Inferred </li>
+                <li><strong>Preventive Management Strategy:</strong> Inoculate with resilient consortia; include functional redundancy.</li>
+                <li><strong>Intervention Strategy:</strong>Re-inoculate with stabilized microbiomes; adjust environmental conditions to support recolonization.</li>
+              </ul>
+            </details>
+	   </details>
+          </details>
+
+
+<details class="hazard hazard-5" id="hazard5">  
+    <summary>Hazard 5: Technologie/Communication</summary>
+
+    <details class="subhazard">
+      <summary>Subhazard 5.1: Hardware and technical failures</summary>
+
+      <details class="subsubhazard">
+        <summary>Environmental control-, irrigation- and lighting system failures</summary>
+
+        <details class="concern">
+          <summary>Concern ID: TC-001 — Temperature spikes</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Thermal regulation system</li>
+            <li><strong>Description of the Concern:</strong> Malfunction in heat dissipation components (e.g., thermoelectric coolers) may cause sudden overheating.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Failure to remove excess heat leads to temperature levels beyond plant tolerance.</li>
+            <li><strong>Source of the Concern:</strong> Inferred </li>
+            <li><strong>Preventive Management Strategy:</strong> Use redundant cooling systems and temperature sensors with auto-shutdown thresholds.</li>
+            <li><strong>Intervention Strategy:</strong> Trigger emergency ventilation or shut down heat sources; manually cool module.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: TC-002 — Humidity regulation errors</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Humidification and dehumidification units</li>
+            <li><strong>Description of the Concern:</strong> Faulty humidifiers or sensors can cause excessive or insufficient humidity.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Loss of control leads to condensation or excessive transpiration.</li>
+            <li><strong>Source of the Concern:</strong> Inferred </li>
+            <li><strong>Preventive Management Strategy:</strong> Redundant sensors, automatic calibration, and backup humidity control systems.</li>
+            <li><strong>Intervention Strategy:</strong> Manual override of misting/dehumidifiers; calibrate or replace sensors.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: TC-003 — CO₂ level mismanagement</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Atmospheric gas delivery and regulation system</li>
+            <li><strong>Description of the Concern:</strong> CO₂ concentration drifts from optimal due to faulty sensors or actuator failure.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Disrupted gas control affects photosynthesis and biomass production.</li>
+            <li><strong>Source of the Concern:</strong> Inferred </li>
+            <li><strong>Preventive Management Strategy:</strong> Regular sensor recalibration, install fail-safes on gas valves.</li>
+            <li><strong>Intervention Strategy:</strong> Manual adjustment; purge or supplement atmosphere.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: TC-004 — Condensation accumulation</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Ventilation and surface management</li>
+            <li><strong>Description of the Concern:</strong> In zero-gravity, stagnant air and cool surfaces promote condensation.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Moisture condenses on plant surfaces or electronics, promoting pathogen growth or corrosion.</li>
+            <li><strong>Source of the Concern:</strong> Inferred </li>
+            <li><strong>Preventive Management Strategy:</strong> Active air circulation in whole module to prevent blind spots; heated surfaces; anti-condensation coatings.</li>
+            <li><strong>Intervention Strategy:</strong> Remove condensation manually; heat or ventilate affected zones.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+          <summary>Concern ID: TC-005 — Lighting interruptions</summary>
+          <ul>
+            <li><strong>Affected System Component:</strong> Lighting system and control system</li>
+            <li><strong>Description of the Concern:</strong> Failures in LED circuits or degraded light output disrupt plant photoperiods.</li>
+            <li><strong>Underlying Risk Mechanism:</strong> Insufficient or irregular lighting inhibits photosynthesis and growth.</li>
+            <li><strong>Source of the Concern:</strong> Inferred </li>
+            <li><strong>Preventive Management Strategy:</strong> Redundant lighting panels; monitor light intensity degradation over time.</li>
+            <li><strong>Intervention Strategy:</strong> Replace LEDs; reprogram light cycles; use emergency backup lamps.</li>
+          </ul>
+        </details>
+
+	<details class="concern">
+  	<summary>Concern ID: TC-006 — Water shortage</summary>
+  	<ul>
+    	<li><strong>Affected System Component:</strong> Pumping and water delivery mechanisms</li>
+    	<li><strong>Description of the Concern:</strong> Water delivery halts due to cavitation or mechanical pump failure, risking plant dehydration.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Flow interruption halts irrigation and nutrient supply.</li>
+    <li><strong>Source of the Concern:</strong> Documented</li>
+    <li><strong>Preventive Management Strategy:</strong> Inline flow sensors and preventative maintenance plans; critical spare parts for rapid exchange.</li>
+    <li><strong>Intervention Strategy:</strong> Replace or restart pumps; flush lines; redistribute water from backup tanks.</li>
+  </ul>
+</details>
+
+<details class="concern">
+  <summary>Concern ID: TC-007 — Over- or underwatering</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Flow monitoring and irrigation logic</li>
+    <li><strong>Description of the Concern:</strong> Drift or malfunction of sensors leads to inconsistent or incorrect watering levels.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Misreading flow or moisture results in flooding or dehydration stress.</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Multi-sensor systems with redundancy; apply machine learning for drift compensation.</li>
+    <li><strong>Intervention Strategy:</strong> Manually adjust watering cycles; recalibrate or replace faulty sensors.</li>
+  </ul>
+</details>
+
+<details class="concern">
+  <summary>Concern ID: TC-008 — Uneven nutrient distribution</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Fertigation distribution nozzles and piping</li>
+    <li><strong>Description of the Concern:</strong> Biofilms or precipitated salts clog individual nozzles, disrupting even nutrient delivery.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Partial flow blockage causes zones of deficiency or toxicity.</li>
+    <li><strong>Source of the Concern:</strong> Documented</li>
+    <li><strong>Preventive Management Strategy:</strong> Regular flushing cycles; inline filters; turbulence-inducing designs.</li>
+    <li><strong>Intervention Strategy:</strong> Clean clogged lines; temporarily bypass or replace affected zones.</li>
+  </ul>
+</details>
+
+<details class="concern">
+  <summary>Concern ID: TC-009 — Localized plant dehydration</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Drip or mist irrigation systems</li>
+    <li><strong>Description of the Concern:</strong> Membrane fouling leads to blocked emission of water vapor or droplets in localized areas.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Inconsistent coverage creates microzones of drought stress.</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Install pressure sensors and back-flush automation.</li>
+    <li><strong>Intervention Strategy:</strong> Clean membranes; increase cycle frequency; rewet affected plants manually.</li>
+  </ul>
+</details>
+
+<details class="concern">
+  <summary>Concern ID: TC-010 — Pressure loss in hydroponic circuits</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Recirculating nutrient delivery loop</li>
+    <li><strong>Description of the Concern:</strong> Air bubble formation disrupts pump pressure in microgravity.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Bubbles reduce liquid continuity and flow rate stability.</li>
+    <li><strong>Source of the Concern:</strong> Documented</li>
+    <li><strong>Preventive Management Strategy:</strong> Install gas separators and inline degassers adapted for space.</li>
+    <li><strong>Intervention Strategy:</strong> Vent trapped air manually or via automated bleed valves.</li>
+  </ul>
+</details>
+
+<details class="concern">
+  <summary>Concern ID: TC-011 — Nutrient imbalance due to flow inconsistencies</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Multi-channel nutrient mixing and dosing systems</li>
+    <li><strong>Description of the Concern:</strong> Inconsistent pump speeds or timing errors cause wrong nutrient ratios.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Nutrient delivery not synchronized between species or locations, leading to deficiency or excess.</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Calibrate all dosing pumps regularly; install multiple EC/pH sensors.</li>
+    <li><strong>Intervention Strategy:</strong> Flush system; reprogram dosing logic; temporarily switch to manual control.</li>
+  </ul>
+</details>
+</details>
+
+<!-- Subsubhazard: Power system failures -->
+      <details class="subsubhazard">
+        <summary>Power system failures</summary>
+
+<details class="concern">
+  <summary>Concern ID: TC-012 — Power loss of CEA-Subsystems</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Electrical power supply to critical subsystems</li>
+    <li><strong>Description of the Concern:</strong> A failure in the primary power source can halt essential environmental control systems.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Sudden power loss disables dependent subsystems simultaneously.</li>
+    <li><strong>Source of the Concern:</strong> Documented</li>
+    <li><strong>Preventive Management Strategy:</strong> implementation of redundant power sources</li>
+    <li><strong>Intervention Strategy:</strong> Switch to backup power; activate critical systems manually if possible.</li>
+  </ul>
+</details>
+
+<details class="concern">
+  <summary>Concern ID: TC-013 — Loss of control logic</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Microcontrollers, edge devices, and logic circuits</li>
+    <li><strong>Description of the Concern:</strong> Failure of embedded batteries or sudden outages can render autonomous controls inoperable.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Power starvation disrupts logic continuity, stopping regulation loops.</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Use of battery health monitoring and swappable battery modules.</li>
+    <li><strong>Intervention Strategy:</strong> Reboot logic units with restored power; activate manual fallback logic.</li>
+  </ul>
+</details>
+
+<details class="concern">
+  <summary>Concern ID: TC-014 — Data corruption</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Control processors and memory storage</li>
+    <li><strong>Description of the Concern:</strong> Sudden voltage drops cause unintended write operations or corrupt active memory states.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Unstable voltage affects SRAM/Flash integrity and stored parameters.</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Include voltage smoothing circuits and error-correcting memory.</li>
+    <li><strong>Intervention Strategy:</strong> Perform system recovery; reload verified firmware configurations.</li>
+  </ul>
+</details>
+
+<details class="concern">
+  <summary>Concern ID: TC-015 — Increased fire risk</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Power distribution units and inverters</li>
+    <li><strong>Description of the Concern:</strong> Overheated electronics or short circuits may ignite flammable components.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Current overload or ventilation failure in enclosed electronics.</li>
+    <li><strong>Source of the Concern:</strong> Documented</li>
+    <li><strong>Preventive Management Strategy:</strong> Load monitoring, thermal sensors, circuit breakers, and fireproof housing.</li>
+    <li><strong>Intervention Strategy:</strong> Isolate affected segment; deploy fire suppression systems; inspect and replace components.</li>
+  </ul>
+</details>
+</details>
+
+<!-- Subsubhazard: System integration and redundancy concerns -->
+      <details class="subsubhazard">
+        <summary>System integration and redundancy concerns</summary>
+
+<details class="concern">
+  <summary>Concern ID: TC-016 — Cascade failure of multiple subsystems</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Interdependent system architecture</li>
+    <li><strong>Description of the Concern:</strong> A failure in one component triggers successive breakdowns in other linked systems.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Lack of isolation or redundancy between dependent subsystems.</li>
+    <li><strong>Source of the Concern:</strong> Documented</li>
+    <li><strong>Preventive Management Strategy:</strong> Establish software and physical redundancy layers; segment systems logically.</li>
+    <li><strong>Intervention Strategy:</strong> Activate backup modules; isolate failing chains and reset affected systems.</li>
+  </ul>
+</details>
+<details class="concern">
+  <summary>Concern ID: TC-017 — System-wide collapse</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Emergency management architecture</li>
+    <li><strong>Description of the Concern:</strong> The entire system fails due to absence of fallback or manual control options.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Critical operations depend on a single point of failure with no override mechanism.</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Design manual override capabilities and autonomous fallback protocols.</li>
+    <li><strong>Intervention Strategy:</strong> Engage manual or autonomous fallback modes to regain partial control.</li>
+  </ul>
+</details>
+<details class="concern">
+  <summary>Concern ID: TC-018 — Delayed failure detection</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> System diagnostics and fault prediction</li>
+    <li><strong>Description of the Concern:</strong> Latent errors are not recognized early enough, worsening the outcome.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Lack of predictive analytics or anomaly detection software.</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Implement continuous diagnostics, health monitoring, and machine learning-based failure prediction.</li>
+    <li><strong>Intervention Strategy:</strong> Improve alert thresholds and add rule-based or AI-assisted failure detection algorithms.</li>
+  </ul>
+</details>
+
+</details>
+
+<!-- Subsubhazard: Robotic and mechatronic failures -->
+      <details class="subsubhazard">
+        <summary>Robotic and mechatronic failures</summary>
+
+<details class="concern">
+  <summary>Concern ID: TC-019 — Damage to growing tips or fruit</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Robotic arms and end-effectors</li>
+    <li><strong>Description of the Concern:</strong> Misalignment or excess force from robots damages delicate plant structures.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Poor calibration or missing feedback loops in robotic motion control.</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Train robotic arms with soft-touch algorithms and real-time force feedback.</li>
+    <li><strong>Intervention Strategy:</strong> Pause automation; recalibrate sensors; manually correct damage.</li>
+  </ul>
+</details>
+<details class="concern">
+  <summary>Concern ID: TC-020 — Ineffective pollination</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Pollination drones or robotic delivery agents</li>
+    <li><strong>Description of the Concern:</strong> Pollination devices fail due to motor issues or instability in microgravity.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Motion instability prevents consistent contact with flowers.</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Stabilize drone platforms; map flight paths to avoid turbulence zones.</li>
+    <li><strong>Intervention Strategy:</strong> Switch to manual pollination; reroute flight algorithms or replace components.</li>
+  </ul>
+</details>
+<details class="concern">
+  <summary>Concern ID: TC-021 — Harvest waste</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Machine vision systems and sorting algorithms</li>
+    <li><strong>Description of the Concern:</strong> Misclassification of harvest readiness leads to loss of edible biomass.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Image processing errors cause underripe or overripe crops to be missed or discarded.</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Improve machine learning models; train on diverse maturity datasets.</li>
+    <li><strong>Intervention Strategy:</strong> Manual inspection and override; retrain models post-error.</li>
+  </ul>
+</details>
+<details class="concern">
+  <summary>Concern ID: TC-022 — Inadvertent spread of pathogens</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Robotic tools and manipulators</li>
+    <li><strong>Description of the Concern:</strong> Pathogens spread through robots not sterilized between tasks or modules.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Cross-contamination due to improper sanitation routines.</li>
+    <li><strong>Source of the Concern:</strong> Documented</li>
+    <li><strong>Preventive Management Strategy:</strong> Integrate UV or chemical sterilization between operations.</li>
+    <li><strong>Intervention Strategy:</strong> Quarantine affected plants; disinfect all robotic interfaces.</li>
+  </ul>
+</details>
+<details class="concern">
+  <summary>Concern ID: TC-023 — Growth chamber blockage or plant entanglement</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Robotic mobility and spatial navigation</li>
+    <li><strong>Description of the Concern:</strong> Robots become stuck in overgrown areas or damage plants during navigation.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Sensor blind spots or actuator faults prevent path correction.</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Continuous spatial mapping and route clearance validation.</li>
+    <li><strong>Intervention Strategy:</strong> Manually reset robots; trim foliage to re-enable access.</li>
+  </ul>
+</details>
+</details>
+</details>
+
+
+<!-- Subhazard 5.2: Communication and remote operation concerns -->
+    <details class="subhazard">
+      <summary>Subhazard 5.2: Communication and remote operation concerns </summary>
+
+<details class="concern">
+  <summary>Concern ID: TC-024 — Delayed environmental correction</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Remote control and telemetry</li>
+    <li><strong>Description of the Concern:</strong> Communication lag between spacecraft and Earth delays necessary environmental adjustments.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Signal latency prevents real-time response to changing conditions.</li>
+    <li><strong>Source of the Concern:</strong> Documented</li>
+    <li><strong>Preventive Management Strategy:</strong> Implement autonomous onboard control algorithms for critical parameters.</li>
+    <li><strong>Intervention Strategy:</strong> Use delayed-command queueing and prioritization logic; provide crew with override tools.</li>
+  </ul>
+</details>
+<details class="concern">
+  <summary>Concern ID: TC-025 — Data misinterpretation</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Sensor networks and control actuators</li>
+    <li><strong>Description of the Concern:</strong> Mismatch between sensed conditions and actuator response due to delayed or corrupted signals.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Asynchronous signal arrival or data lag disrupts feedback control.</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Time-stamped signal syncing; local sensor-actuator pairing.</li>
+    <li><strong>Intervention Strategy:</strong> Recalibrate control logic; cross-verify signals with buffered logs.</li>
+  </ul>
+</details>
+<details class="concern">
+  <summary>Concern ID: TC-026 — Inability to respond to emergent problems</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Communication link (Earth-to-spacecraft)</li>
+    <li><strong>Description of the Concern:</strong> Blackouts or delays may prevent timely intervention in critical failures.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Single-point communication channel dependency or signal obstruction.</li>
+    <li><strong>Source of the Concern:</strong> Documented</li>
+    <li><strong>Preventive Management Strategy:</strong> Develop offline contingency protocols and redundancy in uplink/downlink systems.</li>
+    <li><strong>Intervention Strategy:</strong> Activate predefined autonomous emergency actions onboard.</li>
+  </ul>
+</details>
+<details class="concern">
+  <summary>Concern ID: TC-027 — Maladaptive decision-making</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Remote visual diagnostics and monitoring systems</li>
+    <li><strong>Description of the Concern:</strong> Operators cannot assess plant health in real-time, risking poor response decisions.</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Lack of immediate visual data leads to missed early signs (e.g., wilting, mold).</li>
+    <li><strong>Source of the Concern:</strong> Inferred</li>
+    <li><strong>Preventive Management Strategy:</strong> Use onboard imaging AI for real-time anomaly detection.</li>
+    <li><strong>Intervention Strategy:</strong> Schedule frequent image syncs; enhance onboard documentation by crew.</li>
+  </ul>
+</details>
+<details class="concern">
+  <summary>Concern ID: TC-028 — Data loss or manipulation</summary>
+  <ul>
+    <li><strong>Affected System Component:</strong> Memory and communication infrastructure</li>
+    <li><strong>Description of the Concern:</strong> Data integrity is compromised by cosmic radiation effects such as Single Event Upsets (SEUs).</li>
+    <li><strong>Underlying Risk Mechanism:</strong> Bit-flips or packet loss alter stored or transmitted data.</li>
+    <li><strong>Source of the Concern:</strong> Documented</li>
+    <li><strong>Preventive Management Strategy:</strong> Use ECC memory and radiation-hardened storage devices.</li>
+    <li><strong>Intervention Strategy:</strong> Validate data via checksums; retransmit if corrupted; maintain redundant backups.</li>
+  </ul>
+</details>
+
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      const buttons = document.querySelectorAll('.tab-button');
+      tabs.forEach(t => t.classList.remove('active'));
+      buttons.forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+</html>
